@@ -11,7 +11,7 @@ import XCTest
 import JSONSchema
 
 func fixture(_ named:String, forObject:Any) -> Data {
-  let bundle = Bundle(for:object_getClass(forObject))
+  let bundle = Bundle(for:object_getClass(forObject)!)
   let path = bundle.url(forResource: named, withExtension: nil)!
   let data = try! Data(contentsOf: path)
   return data
@@ -75,7 +75,7 @@ struct Test {
 }
 
 func makeTest(_ object:[String:Any]) -> Test {
-  return Test(description: object["description"] as! String, data: object["data"] as Any!, value: object["valid"] as! Bool)
+  return Test(description: object["description"] as! String, data: object["data"] as! Any, value: object["valid"] as! Bool)
 }
 
 struct Case {

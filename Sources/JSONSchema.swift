@@ -21,8 +21,8 @@ public enum Type: Swift.String {
 extension String {
   func stringByRemovingPrefix(_ prefix:String) -> String? {
     if hasPrefix(prefix) {
-      let index = characters.index(startIndex, offsetBy: prefix.characters.count)
-      return substring(from: index)
+      let idx = index(startIndex, offsetBy: prefix.count)
+      return substring(from: idx)
     }
 
     return nil
